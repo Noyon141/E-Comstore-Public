@@ -1,6 +1,7 @@
 import { getCategories } from "@/actions/get-categories";
 import Link from "next/link";
 import { MainNav } from "./main-nav";
+import { NavbarActions } from "./navbar-actions";
 import { Container } from "./ui/container";
 
 export const Navbar = async () => {
@@ -15,6 +16,7 @@ export const Navbar = async () => {
             </p>
           </Link>
           <MainNav data={categories} />
+          <NavbarActions />
         </div>
       </Container>
     </div>

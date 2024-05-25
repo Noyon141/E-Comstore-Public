@@ -6,6 +6,7 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
+
 import {
   Sheet,
   SheetContent,
@@ -40,7 +41,7 @@ export const MainNav: React.FC<MainNavProps> = ({ data, className }) => {
             href={route.href}
             key={route.href}
             className={cn(
-              "text-sm font-medium transition-colors hover:text-black",
+              "text-base font-medium transition-colors hover:text-black",
               route.active ? "text-black dark:text-white" : "text-neutral-500"
             )}
           >
@@ -51,10 +52,10 @@ export const MainNav: React.FC<MainNavProps> = ({ data, className }) => {
 
       {/* FOR MOBILE VIEW */}
 
-      <div className="md:hidden p-0 mx-3 ">
+      <div className="md:hidden p-0 mx-3 mt-1.5 ">
         <Sheet>
           <SheetTrigger asChild className="">
-            <Button className="h-8 w-8 p-0 mt-1.5">
+            <Button className="h-8 w-8 p-0 ">
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
@@ -74,7 +75,7 @@ export const MainNav: React.FC<MainNavProps> = ({ data, className }) => {
                     key={route.href}
                     href={route.href}
                     className={cn(
-                      "text-sm font-medium transition-colors hover:text-black",
+                      "text-base font-medium transition-colors hover:text-black",
                       route.active
                         ? "text-black dark:text-white"
                         : "text-neutral-500"
