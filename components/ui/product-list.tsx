@@ -3,6 +3,7 @@
 import { Product as productType } from "@/types";
 import { Expand, ShoppingBag } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import {
   Carousel,
   CarouselContent,
@@ -19,10 +20,12 @@ interface ProductListProps {
   title: string;
 }
 export const Product: React.FC<ProductListProps> = ({ items, title }) => {
+  const router = useRouter();
+
   return (
     <div className="space-y-4 flex flex-col items-center justify-center">
       {title && (
-        <h2 className="text-2xl lg:text-3xl font-bold tracking-wider">
+        <h2 className="text-2xl lg:text-3xl font-black tracking-widest">
           {title}
         </h2>
       )}
@@ -32,12 +35,20 @@ export const Product: React.FC<ProductListProps> = ({ items, title }) => {
 
       <Carousel
         className="w-full max-w-xs lg:max-w-4xl 2xl:max-w-7xl sm:max-w-xl md:max-w-2xl overflow-hidden sm:overflow-visible "
-        opts={{ loop: true }}
+        opts={{ loop: true, align: "center" }}
       >
         <CarouselContent className="">
           {items.map((item) => (
-            <CarouselItem key={item.id} className="basis-1/2 lg:basis-1/3 ">
-              <div className="relative w-full h-56 sm:h-72 md:h-80 lg:h-96 aspect-square ">
+            <CarouselItem
+              key={item.id}
+              className="basis-1/2 lg:basis-1/3 xl:basis-1/4"
+            >
+              <div
+                className="relative w-full h-56 sm:h-72 md:h-80 lg:h-96 aspect-square cursor-pointer"
+                onClick={() => {
+                  router.push(`/product/${item.id}`);
+                }}
+              >
                 <Image
                   src={item.images[0].url}
                   alt={item.name}

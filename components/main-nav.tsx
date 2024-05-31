@@ -41,8 +41,8 @@ export const MainNav: React.FC<MainNavProps> = ({ data, className }) => {
             href={route.href}
             key={route.href}
             className={cn(
-              "text-base font-medium transition-colors hover:text-black",
-              route.active ? "text-black dark:text-white" : "text-neutral-500"
+              "text-base font-semibold transition-colors hover:text-black",
+              route.active ? "text-black " : "text-neutral-500"
             )}
           >
             {route.label}
@@ -75,10 +75,8 @@ export const MainNav: React.FC<MainNavProps> = ({ data, className }) => {
                     key={route.href}
                     href={route.href}
                     className={cn(
-                      "text-base font-medium transition-colors hover:text-black",
-                      route.active
-                        ? "text-black dark:text-white"
-                        : "text-neutral-500"
+                      "text-base font-semibold transition-colors hover:text-black",
+                      route.active ? "text-black " : "text-neutral-500"
                     )}
                   >
                     {route.label}
