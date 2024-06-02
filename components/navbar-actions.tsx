@@ -18,7 +18,7 @@ export const NavbarActions = () => {
   return (
     <div className="ml-auto flex items-center gap-x-4 mx-1">
       <Button
-        className="rounded-full bg-black px-6 flex items-center gap-x-2"
+        className="rounded-full bg-black hover:bg-zinc-800 hover:dark:bg-gray-200 dark:bg-white px-6 flex items-center gap-x-2"
         size={"lg"}
         variant={"outline"}
       >

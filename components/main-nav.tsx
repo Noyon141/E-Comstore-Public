@@ -42,7 +42,9 @@ export const MainNav: React.FC<MainNavProps> = ({ data, className }) => {
             key={route.href}
             className={cn(
               "text-base font-semibold transition-colors hover:text-black",
-              route.active ? "text-black " : "text-neutral-500"
+              route.active
+                ? "text-black dark:text-white"
+                : "text-muted-foreground"
             )}
           >
             {route.label}
@@ -55,11 +57,14 @@ export const MainNav: React.FC<MainNavProps> = ({ data, className }) => {
       <div className="md:hidden p-0 mx-3 mt-1.5 ">
         <Sheet>
           <SheetTrigger asChild className="">
-            <Button className="h-8 w-8 p-0 ">
+            <Button className="h-8 w-8 p-0 " variant={"ghost"}>
               <Menu className="h-6 w-6" />
             </Button>
           </SheetTrigger>
-          <SheetContent side={"left"} className={"p-0 w-[65%] bg-white "}>
+          <SheetContent
+            side={"left"}
+            className={"p-0 w-[65%] bg-white dark:bg-black"}
+          >
             <div className="transition ease-in-out duration-300">
               <SheetHeader className="mt-3">
                 <SheetTitle className="font-black text-xl tracking-tighter">
@@ -75,8 +80,10 @@ export const MainNav: React.FC<MainNavProps> = ({ data, className }) => {
                     key={route.href}
                     href={route.href}
                     className={cn(
-                      "text-base font-semibold transition-colors hover:text-black",
-                      route.active ? "text-black " : "text-neutral-500"
+                      "text-base font-semibold transition-colors hover:text-black dark:hover:text-white",
+                      route.active
+                        ? "text-black dark:text-white"
+                        : "text-muted-foreground"
                     )}
                   >
                     {route.label}
