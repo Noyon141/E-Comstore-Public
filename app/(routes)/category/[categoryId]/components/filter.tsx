@@ -49,7 +49,8 @@ export const Filter: React.FC<FilterProps> = ({ valueKey, name, data }) => {
             <Button
               className={cn(
                 "rounded-full px-4 flex items-center gap-x-2 text-sm",
-                selectedValue === filter.id && "bg-black text-white"
+                selectedValue === filter.id &&
+                  "bg-black text-white dark:bg-white dark:text-black"
               )}
               variant={"outline"}
               onClick={() => onClick(filter.id)}
