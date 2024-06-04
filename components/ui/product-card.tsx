@@ -1,5 +1,6 @@
 "use client";
 
+import useCart from "@/hooks/use-cart";
 import usePreviewModal from "@/hooks/use-preview-modal";
 import { Product } from "@/types";
 import { Expand, ShoppingBag } from "lucide-react";
@@ -16,6 +17,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ items }) => {
     event.stopPropagation();
 
     previewModal.onOpen(items);
+  };
+
+  const cart = useCart();
+  const onAddToCart: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+    cart.addItem(items);
   };
   return (
     <div className="group rounded-xl cursor-pointer bg-white space-y-4 border p-3">
@@ -39,7 +46,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ items }) => {
               className=""
             />
             <IconButton
-              onClick={() => {}}
+              onClick={onAddToCart}
               icon={<ShoppingBag size={20} className="text-zinc-900" />}
               className=""
             />
