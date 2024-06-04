@@ -33,14 +33,18 @@ export const CartItem: React.FC<CartItemProps> = ({ data }) => {
         <div className="absolute top-0 right-0 z-10">
           <IconButton icon={<X size={16} />} onClick={onRemoveItem} />
         </div>
-        <div className="relative lg:grid lg:grid-cols-2 lg:gap-x-6 pr-0">
+        <div className="relative xl:grid xl:grid-cols-2 xl:gap-x-6 pr-0">
           <div className="flex justify-between">
             <h3 className="md:text-xl text-base font-bold">{data.name}</h3>
           </div>
-          <div className="flex mt-1 text-sm my-4 md:text-base tracking-wider">
+          <div className="flex mt-1 text-sm my-4 md:text-base tracking-wider items-center gap-x-2">
             <p className="text-muted-foreground">{data.size.name}</p>
-            <p className="text-muted-foreground border-l ml-4 border-gray-500 pl-4">
+            <p className="text-muted-foreground border-l ml-4 flex items-center gap-x-2 border-gray-500 pl-4">
               {data.color.name}
+              <div
+                className="h-5 w-5 rounded-full "
+                style={{ backgroundColor: data.color.value }}
+              />
             </p>
           </div>
           <Currency value={data.price} />
