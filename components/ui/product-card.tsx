@@ -1,5 +1,6 @@
 "use client";
 
+import usePreviewModal from "@/hooks/use-preview-modal";
 import { Product } from "@/types";
 import { Expand, ShoppingBag } from "lucide-react";
 import Image from "next/image";
@@ -10,6 +11,12 @@ interface ProductCardProps {
   items: Product;
 }
 export const ProductCard: React.FC<ProductCardProps> = ({ items }) => {
+  const previewModal = usePreviewModal();
+  const onPreview: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
+
+    previewModal.onOpen(items);
+  };
   return (
     <div className="group rounded-xl cursor-pointer bg-white space-y-4 border p-3">
       <div className="aspect-square rounded-xl bg-gray-100 relative">
@@ -27,7 +34,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ items }) => {
         <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
           <div className="flex gap-x-6 justify-center ">
             <IconButton
-              onClick={() => {}}
+              onClick={onPreview}
               icon={<Expand size={20} className="text-zinc-900" />}
               className=""
             />

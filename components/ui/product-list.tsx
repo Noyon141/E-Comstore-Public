@@ -1,7 +1,6 @@
 "use client";
 
 import { Product as productType } from "@/types";
-import { Expand, ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
@@ -12,11 +11,11 @@ import {
   CarouselPrevious,
 } from "./carousel";
 import { Currency } from "./currency";
-import { IconButton } from "./icon-button";
 import { NoResult } from "./no-result";
 
 interface ProductListProps {
   items: productType[];
+
   title: string;
 }
 export const Product: React.FC<ProductListProps> = ({ items, title }) => {
@@ -62,20 +61,6 @@ export const Product: React.FC<ProductListProps> = ({ items, title }) => {
                   <p className="text-white text-xs font-bold">
                     {item.category?.name}
                   </p>
-                </div>
-                <div className="absolute w-full px-6 bottom-6  transition ">
-                  <div className="flex justify-center gap-x-6">
-                    <IconButton
-                      onClick={() => {}}
-                      icon={<Expand size={20} className="text-zinc-900" />}
-                      className=""
-                    />
-                    <IconButton
-                      onClick={() => {}}
-                      icon={<ShoppingBag size={20} className="text-zinc-900" />}
-                      className=""
-                    />
-                  </div>
                 </div>
               </div>
               <div className="pt-4">
