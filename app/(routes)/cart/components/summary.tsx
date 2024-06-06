@@ -5,7 +5,7 @@ import { Currency } from "@/components/ui/currency";
 import useCart from "@/hooks/use-cart";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 export const Summary = () => {
@@ -13,9 +13,15 @@ export const Summary = () => {
   const searchParams = useSearchParams();
   const removeAll = useCart((state) => state.removeAll);
 
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   useEffect(() => {
     if (searchParams.get("success")) {
-      toast.success("Order paid successfully.");
+      toast.success("Payment successful. Thank you for your order.");
       removeAll();
     }
     if (searchParams.get("canceled")) {
@@ -37,6 +43,10 @@ export const Summary = () => {
 
     window.location = response.data.url;
   };
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <div className="bg-gray-100 rounded-lg mt-16 px-4 py-6 lg:col-span-5 md:p-6 lg:p-8 lg:mt-0">

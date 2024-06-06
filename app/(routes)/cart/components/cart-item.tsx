@@ -42,7 +42,7 @@ export const CartItem: React.FC<CartItemProps> = ({ data }) => {
             <p className="text-muted-foreground border-l ml-4 flex items-center gap-x-2 border-gray-500 pl-4">
               {data.color.name}
               <div
-                className="h-5 w-5 rounded-full "
+                className="h-5 w-5 rounded-full border shadow-xl"
                 style={{ backgroundColor: data.color.value }}
               />
             </p>
